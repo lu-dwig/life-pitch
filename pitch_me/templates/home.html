@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block content%}
+    {% for pitch in pitch %}
+        <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ url_for('static', filename='photos/' + pitch.author.image_file) }}"
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ pitch.author.username }}</a>
+                    <small class="text-muted">{{ pitch.date_posted.strftime('%Y-%m-%d') }}</small>
+                </div>
+                <h2><a class="article-title" href="{{ url_for('pitch',pitch_id=pitch.id) }}">{{ pitch.title }}</a></h2>
+                <p class="article-content">{{ pitch.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock %}
+    
